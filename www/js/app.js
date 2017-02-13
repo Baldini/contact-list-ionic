@@ -19,6 +19,7 @@ angular.module('ionicApp', ['ionic', 'angular.filter'])
         email: item.email,
         firstLetter: item.substring(0, 1)
       });
+        $scope.modal.hide();
       //save to local
     }
     $scope.contacts = [{

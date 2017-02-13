@@ -1,10 +1,11 @@
 <html ng-app="ionicApp">
 
+
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Ionic List Directive</title>
-
   <link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
   <script src="//code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.4.9/angular-filter.min.js"></script>
@@ -19,7 +20,7 @@
     </div>
     <h1 class="title">Contact List</h1>
     <div class="buttons">
-      <button class="button button-icon icon ion-android-person-add"></button>
+      <button class="button button-icon icon ion-android-person-add" ng-click="newaddItem()"></button>
     </div>
   </ion-header-bar>
 
@@ -27,7 +28,7 @@
     <div class="list list-inset">
   <label class="item item-input">
     <i class="icon ion-search placeholder-icon"></i>
-    <input type="text" placeholder="Pesquisar Contato">
+    <input type="text" placeholder="Pesquisar Contato" ng-model="searchQuery">
   </label>
 </div>
     <ion-list show-delete="data.showDelete" show-reorder="data.showReorder" ng-repeat="(key,value) in contacts | groupBy: 'firstLetter' " class="list">
@@ -43,11 +44,33 @@
         <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(item)">
         </ion-delete-button>
       </ion-item>
-
     </ion-list>
-
   </ion-content>
-
+  <script id="templates/modal.html" type="text/ng-template">
+        <ion-modal-view>
+          <ion-header-bar class="bar bar-header bar-positive">
+            <h1 class="title">Novo Contato</h1>
+            <button class="button button-clear button-primary" ng-click="modal.hide()">Cancelar</button>
+          </ion-header-bar>
+          <ion-content class="padding">
+            <div class="list">
+              <label class="item item-input">
+                <span class="input-label">Nome</span>
+                <input ng-model="newUser.name" type="text">
+              </label>
+              <label class="item item-input">
+                <span class="input-label">Telefone</span>
+                <input ng-model="newUser.tel" type="text">
+              </label>
+              <label class="item item-input">
+                <span class="input-label">Email</span>
+                <input ng-model="newUser.email" type="text">
+              </label>
+              <button class="button button-full button-positive" ng-click="addItem(newUser)">Create</button>
+            </div>
+          </ion-content>
+        </ion-modal-view>
+      </script>
 </body>
 
 </html>
