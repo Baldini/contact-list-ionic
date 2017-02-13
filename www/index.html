@@ -20,7 +20,7 @@
     </div>
     <h1 class="title">Contact List</h1>
     <div class="buttons">
-      <button class="button button-icon icon ion-android-person-add" ng-click="newaddItem()"></button>
+      <button class="button button-icon icon ion-android-person-add" ng-click="abreModal()"></button>
     </div>
   </ion-header-bar>
 
@@ -46,7 +46,7 @@
       </ion-item>
     </ion-list>
   </ion-content>
-  <script id="templates/modal.html" type="text/ng-template">
+  <script id="Cadastro.html" type="text/ng-template">
         <ion-modal-view>
           <ion-header-bar class="bar bar-header bar-positive">
             <h1 class="title">Novo Contato</h1>
@@ -55,18 +55,15 @@
           <ion-content class="padding">
             <div class="list">
               <label class="item item-input">
-                <span class="input-label">Nome</span>
-                <input ng-model="newUser.name" type="text">
+                <input ng-model="newUser.name" type="text" placeholder="Nome">
               </label>
               <label class="item item-input">
-                <span class="input-label">Telefone</span>
-                <input ng-model="newUser.tel" type="text">
+                <input ng-model="newUser.tel" type="text" placeholder="Telefone">
               </label>
               <label class="item item-input">
-                <span class="input-label">Email</span>
-                <input ng-model="newUser.email" type="text">
+                <input ng-model="newUser.email" type="text" placeholder="Email">
               </label>
-              <button class="button button-full button-positive" ng-click="addItem(newUser)">Create</button>
+              <button class="button button-full button-positive" ng-click="addItem(newUser)">Criar novo Contato</button>
             </div>
           </ion-content>
         </ion-modal-view>

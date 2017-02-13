@@ -1,7 +1,17 @@
 angular.module('ionicApp', ['ionic', 'angular.filter'])
 
-  .controller('MyCtrl', function($scope) {
+  .controller('MyCtrl', function($scope, $ionicModal) {
 
+    $ionicModal.fromTemplateUrl('Cadastro.html', {
+      scope:$scope,
+      animation:'slide-in-up'
+    }).then(function(modal){
+      $scope.modal = modal;
+    });
+
+    $scope.abreModal = function(){
+      $scope.modal.show();
+    }
     $scope.data = {
       showDelete: false
     };
@@ -19,7 +29,7 @@ angular.module('ionicApp', ['ionic', 'angular.filter'])
         email: item.email,
         firstLetter: item.substring(0, 1)
       });
-        $scope.modal.hide();
+
       //save to local
     }
     $scope.contacts = [{
@@ -40,5 +50,6 @@ angular.module('ionicApp', ['ionic', 'angular.filter'])
       }
     ];
     //load from local
+
 
   });
